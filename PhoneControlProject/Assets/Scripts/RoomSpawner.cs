@@ -33,24 +33,44 @@ public class RoomSpawner : MonoBehaviour {
                 // Need to spawn a room with a BOTTOM door.
                 rand = Random.Range(0, templates.bottomRooms.Length);
                 Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                Vector3 pos = transform.position;
+                pos.z -= 5;
+                GameObject temp = Instantiate(templates.fog, pos, templates.fog.transform.rotation);
+                temp.GetComponent<FogOfWar>().fogPlane = temp;
+                temp.GetComponent<FogOfWar>().Initialize();
             }
             else if (openingDirection == 2)
             {
                 // Need to spawn a room with a TOP door.
                 rand = Random.Range(0, templates.topRooms.Length);
                 Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                Vector3 pos = transform.position;
+                pos.z -= 5;
+                GameObject temp = Instantiate(templates.fog, pos, templates.fog.transform.rotation);
+                temp.GetComponent<FogOfWar>().fogPlane = temp;
+                temp.GetComponent<FogOfWar>().Initialize();
             }
             else if (openingDirection == 3)
             {
                 // Need to spawn a room with a LEFT door.
                 rand = Random.Range(0, templates.leftRooms.Length);
                 Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                Vector3 pos = transform.position;
+                pos.z -= 5;
+                GameObject temp = Instantiate(templates.fog, pos, templates.fog.transform.rotation);
+                temp.GetComponent<FogOfWar>().fogPlane = temp;
+                temp.GetComponent<FogOfWar>().Initialize();
             }
             else if (openingDirection == 4)
             {
                 // Need to spawn a room with a RIGHT door.
                 rand = Random.Range(0, templates.rightRooms.Length);
                 Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                Vector3 pos = transform.position;
+                pos.z -= 5;
+                GameObject temp = Instantiate(templates.fog, pos, templates.fog.transform.rotation);
+                temp.GetComponent<FogOfWar>().fogPlane = temp;
+                temp.GetComponent<FogOfWar>().Initialize();
             }
             spawned = true;
         }
@@ -68,5 +88,14 @@ public class RoomSpawner : MonoBehaviour {
             }
             spawned = true;
         }
+    }
+
+    private void AddFog()
+    {
+        Vector3 pos = transform.position;
+        pos.z -= 15;
+        GameObject temp = Instantiate(templates.fog, pos, templates.fog.transform.rotation);
+        temp.GetComponent<FogOfWar>().fogPlane = temp;
+        temp.GetComponent<FogOfWar>().Initialize();
     }
 }
