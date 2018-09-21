@@ -73,6 +73,7 @@ public class RoomSpawner : MonoBehaviour {
                 temp.GetComponent<FogOfWar>().Initialize();
             }
             spawned = true;
+            templates.openingDirection = openingDirection;
         }
     }
 
