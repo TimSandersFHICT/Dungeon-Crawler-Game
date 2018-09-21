@@ -6,9 +6,8 @@ public class FogDestroyer : MonoBehaviour {
 
     void Update()
     {
-        Ray ray = new Ray(transform.position, (Player.Instance.GetPlayerPosition().position - transform.position));
+        Ray ray = new Ray(transform.position, (Player.Instance.GetPlayerTransform().position - transform.position));
         RaycastHit hit;
-        Debug.DrawRay(transform.position, (Player.Instance.GetPlayerPosition().position - transform.position), Color.red, 1, false);
 
         //Remove in case of removing the effect once player has been at a certain location
         //for (int i = 0; i < colors.Length; i++)
@@ -20,7 +19,6 @@ public class FogDestroyer : MonoBehaviour {
         {
             GameObject temp = hit.transform.gameObject;
             temp.GetComponent<FogOfWar>().Hit(hit);
-            Debug.Log("Been here");
         }
     }
 }

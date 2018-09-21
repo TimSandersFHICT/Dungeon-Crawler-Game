@@ -17,12 +17,12 @@ public class FogOfWar : MonoBehaviour {
 
     void Start()
     {
-        player = Player.Instance.GetPlayerPosition();
+        player = Player.Instance.GetPlayerTransform();
     }
 
     void Update()
     {
-        player = Player.Instance.GetPlayerPosition();
+        player = Player.Instance.GetPlayerTransform();
 
         //Ray ray = new Ray(transform.position, player.position - transform.position);
         Ray ray = new Ray(transform.position, transform.position);
@@ -71,8 +71,6 @@ public class FogOfWar : MonoBehaviour {
 
     public void Hit(RaycastHit hit)
     {
-        Debug.Log("Fog hit");
-
         for (int i = 0; i < vertices.Length; i++)
         {
             Vector3 vector = fogPlane.transform.TransformPoint(vertices[i]);
